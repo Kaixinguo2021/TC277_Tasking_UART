@@ -1,0 +1,601 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.3r1 Build 19041558 SN 09003382"
+	.compiler_invocation	"ctc --dep-file=0_Src\\1_SrvSw\\SysSe\\Bsp\\.Assert.o.d --fp-model=c,l,f,z,n,r,S,T -D__CPU__=tc27xc -D__CPU_TC27XC__ --core=tc1.6.x --iso=99 -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\0_AppSw\\Config\\Common -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\2_CDrv\\Tricore -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\0_AppSw -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\0_AppSw\\Tricore -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\1_SrvSw -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\0_AppSw\\Tricore\\Main -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\1_SrvSw\\If -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\1_SrvSw\\StdIf -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\1_SrvSw\\SysSe -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\1_SrvSw\\Tricore -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\1_SrvSw\\Tricore\\Compilers -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\4_McHal\\Tricore -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\4_McHal\\Tricore\\_Impl -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\4_McHal\\Tricore\\_Lib -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\4_McHal\\Tricore\\_PinMap -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\4_McHal\\Tricore\\_Reg -g2 --make-target=0_Src\\1_SrvSw\\SysSe\\Bsp\\Assert.o -t4 --language=-gcc,-volatile,+strings,-kanji --default-near-size=8 -O2 --default-a1-size=0 --default-a0-size=0 --source --align=0 --compact-max-size=200 --switch=auto --error-limit=42 -o 0_Src\\1_SrvSw\\SysSe\\Bsp\\Assert.src ..\\0_Src\\1_SrvSw\\SysSe\\Bsp\\Assert.c"
+	.compiler_name		"ctc"
+	;source	'..\\0_Src\\1_SrvSw\\SysSe\\Bsp\\Assert.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.Assert.Ifx_Assert_doLevel',code,cluster('Ifx_Assert_doLevel')
+	.sect	'.text.Assert.Ifx_Assert_doLevel'
+	.align	2
+	
+	.global	Ifx_Assert_doLevel
+
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	     1  /**
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	     2   * \file Assert.c
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	     3   * \brief Assert functions.
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	     4   *
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	     5   * \version iLLD_1_0_0_11_0
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	     6   * \copyright Copyright (c) 2013 Infineon Technologies AG. All rights reserved.
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	     7   *
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	     8   *
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	     9   *                                 IMPORTANT NOTICE
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    10   *
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    11   *
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    12   * Infineon Technologies AG (Infineon) is supplying this file for use
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    13   * exclusively with Infineon's microcontroller products. This file can be freely
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    14   * distributed within development tools that are supporting such microcontroller
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    15   * products.
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    16   *
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    17   * THIS SOFTWARE IS PROVIDED "AS IS".  NO WARRANTIES, WHETHER EXPRESS, IMPLIED
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    18   * OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    19   * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE.
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    20   * INFINEON SHALL NOT, IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL,
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    21   * OR CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    22   *
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    23   */
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    24  
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    25  #include "Assert.h"
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    26  
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    27  #if IFX_CFG_ASSERT_STDIO == 1
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    28  /** Current standard IO used for the IFX_ASSERT and IFX_VALIDATE */
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    29  IfxStdIf_DPipe *Assert_io = NULL_PTR;
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    30  #endif
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    31  
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    32  #if IFX_CFG_ASSERT_VERBOSE_LEVEL_DEFAULT > IFX_VERBOSE_LEVEL_OFF
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    33  uint32          Assert_verboseLevel = IFX_CFG_ASSERT_VERBOSE_LEVEL_DEFAULT;
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    34  #endif
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    35  
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    36  #if IFX_CFG_ASSERT_STDIO == 1
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    37  void Ifx_Assert_setStandardIo(IfxStdIf_DPipe *standardIo)
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    38  {
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    39      Assert_io = standardIo;
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    40  }
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    41  
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    42  
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    43  #endif
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    44  
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    45  /** \internal
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    46   * Text used to display the king of assertion
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    47   */
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    48  const pchar Assert_level[6] = {
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    49      "OFF",
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    50      "FAILURE",
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    51      "ERROR",
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    52      "WARNING",
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    53      "INFO",
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    54      "DEBUG"
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    55  };
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    56  
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    57  void Ifx_Assert_doLevel(uint8 level, pchar __assertion, pchar __file, unsigned int __line, pchar __function)
+; Function Ifx_Assert_doLevel
+.L4:
+Ifx_Assert_doLevel:	.type	func
+
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    58  {
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    59  #if IFX_CFG_ASSERT_USE_BREAKPOINT == 1
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    60  
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    61      if (level <= IFX_VERBOSE_LEVEL_ERROR)
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    62      {
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    63          __debug();
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    64      }
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    65  
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    66  #endif
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    67  
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    68  #if IFX_CFG_ASSERT_STDIO == 1
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    69  
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    70      if (Assert_io != NULL_PTR)
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    71      {
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    72          IfxStdIf_DPipe_print(Assert_io, "ASSERTION %s '%s' in %s:%u (function '%s()')" ENDL, Assert_level[level],
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    73              __assertion, __file, __line, __function);
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    74      }
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    75  
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    76  #endif
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    77  }
+	ret
+.L25:
+	
+__Ifx_Assert_doLevel_function_end:
+	.size	Ifx_Assert_doLevel,__Ifx_Assert_doLevel_function_end-Ifx_Assert_doLevel
+.L15:
+	; End of function
+	
+	.sdecl	'.text.Assert.Ifx_Assert_doValidate',code,cluster('Ifx_Assert_doValidate')
+	.sect	'.text.Assert.Ifx_Assert_doValidate'
+	.align	2
+	
+	.global	Ifx_Assert_doValidate
+
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    78  
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    79  
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    80  boolean Ifx_Assert_doValidate(boolean expr, uint8 level, pchar __assertion, pchar __file, unsigned int __line, pchar __function)
+; Function Ifx_Assert_doValidate
+.L6:
+Ifx_Assert_doValidate:	.type	func
+
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    81  {
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    82      if (!((expr) || (level > Assert_verboseLevel)))
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    83      {
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    84  #if IFX_CFG_ASSERT_USE_BREAKPOINT == 1
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    85  
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    86          if (level <= IFX_VERBOSE_LEVEL_ERROR)
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    87          {
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    88              __debug();
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    89          }
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    90  
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    91  #endif
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    92  
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    93  #if IFX_CFG_ASSERT_STDIO == 1
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    94  
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    95          if (Assert_io != NULL_PTR)
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    96          {
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    97              IfxStdIf_DPipe_print(Assert_io, "VALIDATION %s '%s' in %s:%u (function '%s()')" ENDL, Assert_level[level],
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    98                  __assertion, __file, __line, __function);
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	    99          }
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	   100  
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	   101  #endif
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	   102      }
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	   103      else
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	   104      {}
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	   105  
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	   106      return expr;
+; ..\0_Src\1_SrvSw\SysSe\Bsp\Assert.c	   107  }
+	mov	d2,d4
+	ret
+.L34:
+	
+__Ifx_Assert_doValidate_function_end:
+	.size	Ifx_Assert_doValidate,__Ifx_Assert_doValidate_function_end-Ifx_Assert_doValidate
+.L20:
+	; End of function
+	
+	.sdecl	'.zdata.Assert.Assert_verboseLevel',data,cluster('Assert_verboseLevel')
+	.sect	'.zdata.Assert.Assert_verboseLevel'
+	.global	Assert_verboseLevel
+	.align	2
+Assert_verboseLevel:	.type	object
+	.size	Assert_verboseLevel,4
+	.word	4
+	.sdecl	'.zrodata.Assert..1.str',data,rom
+	.sect	'.zrodata.Assert..1.str'
+.1.str:	.type	object
+	.size	.1.str,4
+	.byte	79,70,70
+	.space	1
+	.sdecl	'.zrodata.Assert..2.str',data,rom
+	.sect	'.zrodata.Assert..2.str'
+.2.str:	.type	object
+	.size	.2.str,8
+	.byte	70,65,73,76
+	.byte	85,82,69
+	.space	1
+	.sdecl	'.zrodata.Assert..3.str',data,rom
+	.sect	'.zrodata.Assert..3.str'
+.3.str:	.type	object
+	.size	.3.str,6
+	.byte	69,82,82,79
+	.byte	82
+	.space	1
+	.sdecl	'.zrodata.Assert..4.str',data,rom
+	.sect	'.zrodata.Assert..4.str'
+.4.str:	.type	object
+	.size	.4.str,8
+	.byte	87,65,82,78
+	.byte	73,78,71
+	.space	1
+	.sdecl	'.zrodata.Assert..5.str',data,rom
+	.sect	'.zrodata.Assert..5.str'
+.5.str:	.type	object
+	.size	.5.str,5
+	.byte	73,78,70,79
+	.space	1
+	.sdecl	'.zrodata.Assert..6.str',data,rom
+	.sect	'.zrodata.Assert..6.str'
+.6.str:	.type	object
+	.size	.6.str,6
+	.byte	68,69,66,85
+	.byte	71
+	.space	1
+	.sdecl	'.rodata.Assert.Assert_level',data,rom,cluster('Assert_level')
+	.sect	'.rodata.Assert.Assert_level'
+	.global	Assert_level
+	.align	4
+Assert_level:	.type	object
+	.size	Assert_level,24
+	.word	.1.str,.2.str,.3.str,.4.str
+	.word	.5.str,.6.str
+	.calls	'Ifx_Assert_doLevel','',0
+	.calls	'Ifx_Assert_doValidate','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L8:
+	.word	657
+	.half	3
+	.word	.L9
+	.byte	4
+.L7:
+	.byte	1
+	.byte	'..\\0_Src\\1_SrvSw\\SysSe\\Bsp\\Assert.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'D:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\Debug\\',0,12,1
+	.word	.L10
+	.byte	2
+	.byte	'int',0,4,5,3
+	.word	144
+	.byte	4
+	.byte	'__c11_atomic_thread_fence',0,1,1,1,1,5
+	.word	151
+	.byte	0
+.L31:
+	.byte	2
+	.byte	'unsigned int',0,4,7,6
+	.word	193
+	.byte	7
+	.word	193
+	.byte	8
+	.byte	'__cmpswapw',0
+	.word	209
+	.byte	1,1,1,1,9
+	.byte	'p',0
+	.word	214
+	.byte	9
+	.byte	'value',0
+	.word	193
+	.byte	9
+	.byte	'compare',0
+	.word	193
+	.byte	0
+.L26:
+	.byte	2
+	.byte	'unsigned char',0,1,8,2
+	.byte	'char',0,1,6,3
+	.word	288
+	.byte	7
+	.word	296
+	.byte	3
+	.word	288
+	.byte	7
+	.word	306
+.L28:
+	.byte	10
+	.byte	'pchar',0,1,39,28
+	.word	311
+	.byte	2
+	.byte	'short int',0,2,5,10
+	.byte	'__wchar_t',0,2,1,1
+	.word	330
+	.byte	10
+	.byte	'__size_t',0,2,1,1
+	.word	193
+	.byte	10
+	.byte	'__ptrdiff_t',0,2,1,1
+	.word	144
+	.byte	11,1,7
+	.word	398
+	.byte	10
+	.byte	'__codeptr',0,2,1,1
+	.word	400
+	.byte	10
+	.byte	'uint8',0,3,89,24
+	.word	271
+	.byte	10
+	.byte	'sint16',0,3,90,24
+	.word	330
+	.byte	2
+	.byte	'unsigned short int',0,2,7,10
+	.byte	'uint16',0,3,91,24
+	.word	452
+	.byte	2
+	.byte	'long int',0,4,5,10
+	.byte	'sint32',0,3,92,24
+	.word	489
+.L41:
+	.byte	2
+	.byte	'unsigned long int',0,4,7,10
+	.byte	'uint32',0,3,93,24
+	.word	516
+	.byte	10
+	.byte	'boolean',0,3,104,24
+	.word	271
+	.byte	2
+	.byte	'long long int',0,8,5,10
+	.byte	'sint64',0,1,36,28
+	.word	568
+	.byte	12
+	.byte	'void',0,7
+	.word	600
+	.byte	10
+	.byte	'pvoid',0,1,40,28
+	.word	606
+	.byte	10
+	.byte	'Ifx_TickTime',0,1,43,28
+	.word	568
+	.byte	13,24
+	.word	316
+	.byte	14,5,0
+.L42:
+	.byte	3
+	.word	646
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L9:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,38,0,73,19,0,0,4,46,1,3,8,54
+	.byte	15,39,12,63,12,60,12,0,0,5,5,0,73,19,0,0,6,53,0,73,19,0,0,7,15,0,73,19,0,0,8,46,1,3,8,73,19,54,15,39,12
+	.byte	63,12,60,12,0,0,9,5,0,3,8,73,19,0,0,10,22,0,3,8,58,15,59,15,57,15,73,19,0,0,11,21,0,54,15,0,0,12,59,0
+	.byte	3,8,0,0,13,1,1,11,15,73,19,0,0,14,33,0,47,15,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L10:
+	.word	.L44-.L43
+.L43:
+	.half	3
+	.word	.L46-.L45
+.L45:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'D:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\4_McHal\\Tricore\\Cpu\\Std\\Ifx_Types.h',0,0,0,0
+	.byte	'..\\0_Src\\1_SrvSw\\SysSe\\Bsp\\Assert.c',0,0,0,0
+	.byte	'D:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\4_McHal\\Tricore\\Cpu\\Std\\Platform_Types.h',0,0
+	.byte	0,0,0
+.L46:
+.L44:
+	.sdecl	'.debug_info',debug,cluster('Ifx_Assert_doLevel')
+	.sect	'.debug_info'
+.L11:
+	.word	301
+	.half	3
+	.word	.L12
+	.byte	4,1
+	.byte	'..\\0_Src\\1_SrvSw\\SysSe\\Bsp\\Assert.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'D:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\Debug\\',0,12,1
+	.word	.L14,.L13
+	.byte	2
+	.word	.L7
+	.byte	3
+	.byte	'Ifx_Assert_doLevel',0,1,57,6,1,1,1
+	.word	.L4,.L25,.L3
+	.byte	4
+	.byte	'level',0,1,57,31
+	.word	.L26,.L27
+	.byte	4
+	.byte	'__assertion',0,1,57,44
+	.word	.L28,.L29
+	.byte	4
+	.byte	'__file',0,1,57,63
+	.word	.L28,.L30
+	.byte	4
+	.byte	'__line',0,1,57,84
+	.word	.L31,.L32
+	.byte	4
+	.byte	'__function',0,1,57,98
+	.word	.L28,.L33
+	.byte	5
+	.word	.L4,.L25
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Ifx_Assert_doLevel')
+	.sect	'.debug_abbrev'
+.L12:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Ifx_Assert_doLevel')
+	.sect	'.debug_line'
+.L13:
+	.word	.L48-.L47
+.L47:
+	.half	3
+	.word	.L50-.L49
+.L49:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\0_Src\\1_SrvSw\\SysSe\\Bsp\\Assert.c',0,0,0,0,0
+.L50:
+	.byte	5,1,7,0,5,2
+	.word	.L4
+	.byte	3,204,0,1,7,9
+	.half	.L15-.L4
+	.byte	0,1,1
+.L48:
+	.sdecl	'.debug_ranges',debug,cluster('Ifx_Assert_doLevel')
+	.sect	'.debug_ranges'
+.L14:
+	.word	-1,.L4,0,.L15-.L4,0,0
+	.sdecl	'.debug_info',debug,cluster('Ifx_Assert_doValidate')
+	.sect	'.debug_info'
+.L16:
+	.word	325
+	.half	3
+	.word	.L17
+	.byte	4,1
+	.byte	'..\\0_Src\\1_SrvSw\\SysSe\\Bsp\\Assert.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'D:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\Debug\\',0,12,1
+	.word	.L19,.L18
+	.byte	2
+	.word	.L7
+	.byte	3
+	.byte	'Ifx_Assert_doValidate',0,1,80,9
+	.word	.L26
+	.byte	1,1,1
+	.word	.L6,.L34,.L5
+	.byte	4
+	.byte	'expr',0,1,80,39
+	.word	.L26,.L35
+	.byte	4
+	.byte	'level',0,1,80,51
+	.word	.L26,.L36
+	.byte	4
+	.byte	'__assertion',0,1,80,64
+	.word	.L28,.L37
+	.byte	4
+	.byte	'__file',0,1,80,83
+	.word	.L28,.L38
+	.byte	4
+	.byte	'__line',0,1,80,104
+	.word	.L31,.L39
+	.byte	4
+	.byte	'__function',0,1,80,118
+	.word	.L28,.L40
+	.byte	5
+	.word	.L6,.L34
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Ifx_Assert_doValidate')
+	.sect	'.debug_abbrev'
+.L17:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Ifx_Assert_doValidate')
+	.sect	'.debug_line'
+.L18:
+	.word	.L52-.L51
+.L51:
+	.half	3
+	.word	.L54-.L53
+.L53:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\0_Src\\1_SrvSw\\SysSe\\Bsp\\Assert.c',0,0,0,0,0
+.L54:
+	.byte	5,5,7,0,5,2
+	.word	.L6
+	.byte	3,233,0,1,5,1,3,1,1,7,9
+	.half	.L20-.L6
+	.byte	0,1,1
+.L52:
+	.sdecl	'.debug_ranges',debug,cluster('Ifx_Assert_doValidate')
+	.sect	'.debug_ranges'
+.L19:
+	.word	-1,.L6,0,.L20-.L6,0,0
+	.sdecl	'.debug_info',debug,cluster('Assert_verboseLevel')
+	.sect	'.debug_info'
+.L21:
+	.word	177
+	.half	3
+	.word	.L22
+	.byte	4,1
+	.byte	'..\\0_Src\\1_SrvSw\\SysSe\\Bsp\\Assert.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'D:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\Debug\\',0,12,1,2
+	.word	.L7
+	.byte	3
+	.byte	'Assert_verboseLevel',0,2,33,17
+	.word	.L41
+	.byte	1,5,3
+	.word	Assert_verboseLevel
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Assert_verboseLevel')
+	.sect	'.debug_abbrev'
+.L22:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('Assert_level')
+	.sect	'.debug_info'
+.L23:
+	.word	170
+	.half	3
+	.word	.L24
+	.byte	4,1
+	.byte	'..\\0_Src\\1_SrvSw\\SysSe\\Bsp\\Assert.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'D:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\Debug\\',0,12,1,2
+	.word	.L7
+	.byte	3
+	.byte	'Assert_level',0,2,48,13
+	.word	.L42
+	.byte	1,5,3
+	.word	Assert_level
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Assert_level')
+	.sect	'.debug_abbrev'
+.L24:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_loc',debug,cluster('Ifx_Assert_doLevel')
+	.sect	'.debug_loc'
+.L3:
+	.word	-1,.L4,0,.L25-.L4
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L29:
+	.word	-1,.L4,0,.L25-.L4
+	.half	1
+	.byte	100
+	.word	0,0
+.L30:
+	.word	-1,.L4,0,.L25-.L4
+	.half	1
+	.byte	101
+	.word	0,0
+.L33:
+	.word	-1,.L4,0,.L25-.L4
+	.half	1
+	.byte	102
+	.word	0,0
+.L32:
+	.word	-1,.L4,0,.L25-.L4
+	.half	1
+	.byte	85
+	.word	0,0
+.L27:
+	.word	-1,.L4,0,.L25-.L4
+	.half	1
+	.byte	84
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Ifx_Assert_doValidate')
+	.sect	'.debug_loc'
+.L5:
+	.word	-1,.L6,0,.L34-.L6
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L37:
+	.word	-1,.L6,0,.L34-.L6
+	.half	1
+	.byte	100
+	.word	0,0
+.L38:
+	.word	-1,.L6,0,.L34-.L6
+	.half	1
+	.byte	101
+	.word	0,0
+.L40:
+	.word	-1,.L6,0,.L34-.L6
+	.half	1
+	.byte	102
+	.word	0,0
+.L39:
+	.word	-1,.L6,0,.L34-.L6
+	.half	1
+	.byte	86
+	.word	0,0
+.L35:
+	.word	-1,.L6,0,.L34-.L6
+	.half	1
+	.byte	84
+	.word	0,0
+.L36:
+	.word	-1,.L6,0,.L34-.L6
+	.half	1
+	.byte	85
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L55:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('Ifx_Assert_doLevel')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L55,.L4,.L25-.L4
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Ifx_Assert_doValidate')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L55,.L6,.L34-.L6
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+
+
+	; Module end

@@ -1,0 +1,955 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.3r1 Build 19041558 SN 09003382"
+	.compiler_invocation	"ctc --dep-file=0_Src\\4_McHal\\Tricore\\Emem\\Std\\.IfxEmem.o.d --fp-model=c,l,f,z,n,r,S,T -D__CPU__=tc27xc -D__CPU_TC27XC__ --core=tc1.6.x --iso=99 -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\0_AppSw\\Config\\Common -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\2_CDrv\\Tricore -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\0_AppSw -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\0_AppSw\\Tricore -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\1_SrvSw -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\0_AppSw\\Tricore\\Main -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\1_SrvSw\\If -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\1_SrvSw\\StdIf -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\1_SrvSw\\SysSe -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\1_SrvSw\\Tricore -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\1_SrvSw\\Tricore\\Compilers -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\4_McHal\\Tricore -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\4_McHal\\Tricore\\_Impl -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\4_McHal\\Tricore\\_Lib -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\4_McHal\\Tricore\\_PinMap -ID:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\4_McHal\\Tricore\\_Reg -g2 --make-target=0_Src\\4_McHal\\Tricore\\Emem\\Std\\IfxEmem.o -t4 --language=-gcc,-volatile,+strings,-kanji --default-near-size=8 -O2 --default-a1-size=0 --default-a0-size=0 --source --align=0 --compact-max-size=200 --switch=auto --error-limit=42 -o 0_Src\\4_McHal\\Tricore\\Emem\\Std\\IfxEmem.src ..\\0_Src\\4_McHal\\Tricore\\Emem\\Std\\IfxEmem.c"
+	.compiler_name		"ctc"
+	;source	'..\\0_Src\\4_McHal\\Tricore\\Emem\\Std\\IfxEmem.c'
+
+	
+$TC16X
+	.sdecl	'.zrodata.IfxEmem..1.cnt',data,rom
+	.sect	'.zrodata.IfxEmem..1.cnt'
+	.align	2
+.1.cnt:	.type	object
+	.size	.1.cnt,4
+	.word	-116498432
+	
+	.sdecl	'.text.IfxEmem.IfxEmem_getLockedState',code,cluster('IfxEmem_getLockedState')
+	.sect	'.text.IfxEmem.IfxEmem_getLockedState'
+	.align	2
+	
+	.global	IfxEmem_getLockedState
+
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	     1  /**
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	     2   * \file IfxEmem.c
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	     3   * \brief EMEM  basic functionality
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	     4   *
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	     5   * \version iLLD_1_0_0_11_0
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	     6   * \copyright Copyright (c) 2013 Infineon Technologies AG. All rights reserved.
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	     7   *
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	     8   *
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	     9   *                                 IMPORTANT NOTICE
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    10   *
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    11   *
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    12   * Infineon Technologies AG (Infineon) is supplying this file for use
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    13   * exclusively with Infineon's microcontroller products. This file can be freely
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    14   * distributed within development tools that are supporting such microcontroller
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    15   * products.
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    16   *
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    17   * THIS SOFTWARE IS PROVIDED "AS IS".  NO WARRANTIES, WHETHER EXPRESS, IMPLIED
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    18   * OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    19   * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE.
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    20   * INFINEON SHALL NOT, IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL,
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    21   * OR CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    22   *
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    23   */
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    24  
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    25  /******************************************************************************/
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    26  /*----------------------------------Includes----------------------------------*/
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    27  /******************************************************************************/
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    28  
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    29  #include "IfxEmem.h"
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    30  #include "Cpu/Std/IfxCpu_Intrinsics.h"
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    31  
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    32  /******************************************************************************/
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    33  /*-------------------------Function Implementations---------------------------*/
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    34  /******************************************************************************/
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    35  
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    36  IfxEmem_LockedState IfxEmem_getLockedState(void)
+; Function IfxEmem_getLockedState
+.L6:
+IfxEmem_getLockedState:	.type	func
+
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    37  {
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    38      return (IfxEmem_LockedState)MODULE_EMEM.SBRCTR.B.STBLOCK;
+	movh.a	a15,#63758
+	ld.w	d15,[a15]@los(0xf90e6034)
+.L36:
+
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    39  }
+	and	d2,d15,#1
+	ret
+.L24:
+	
+__IfxEmem_getLockedState_function_end:
+	.size	IfxEmem_getLockedState,__IfxEmem_getLockedState_function_end-IfxEmem_getLockedState
+.L17:
+	; End of function
+	
+	.sdecl	'.text.IfxEmem.IfxEmem_setClockEnableState',code,cluster('IfxEmem_setClockEnableState')
+	.sect	'.text.IfxEmem.IfxEmem_setClockEnableState'
+	.align	2
+	
+	.global	IfxEmem_setClockEnableState
+
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    40  
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    41  
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    42  void IfxEmem_setClockEnableState(const IfxEmem_State state)
+; Function IfxEmem_setClockEnableState
+.L8:
+IfxEmem_setClockEnableState:	.type	func
+
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    43  {
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    44      /* bit is inverted */
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    45      if (IfxEmem_State_enabled == state)
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    46      {
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    47          MODULE_EMEM.CLC.B.DISR = 0;
+	ld.w	d15,.1.cnt
+.L41:
+	mov.a	a15,d15
+.L42:
+	jne	d4,#1,.L3
+.L43:
+	ld.w	d15,[a15]
+.L44:
+	insert	d15,d15,#0,#0,#1
+	j	.L4
+.L3:
+
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    48      }
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    49      else
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    50      {
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    51          MODULE_EMEM.CLC.B.DISR = 1;
+	ld.w	d15,[a15]
+.L45:
+	or	d15,#1
+.L4:
+	st.w	[a15],d15
+.L46:
+
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    52      }
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    53  
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    54      /* wait one cycle for module to be enabled */
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    55      __nop();
+	nop
+.L47:
+
+; ..\0_Src\4_McHal\Tricore\Emem\Std\IfxEmem.c	    56  }
+	ret
+.L25:
+	
+__IfxEmem_setClockEnableState_function_end:
+	.size	IfxEmem_setClockEnableState,__IfxEmem_setClockEnableState_function_end-IfxEmem_setClockEnableState
+.L22:
+	; End of function
+	
+	.calls	'IfxEmem_getLockedState','',0
+	.calls	'IfxEmem_setClockEnableState','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L10:
+	.word	4451
+	.half	3
+	.word	.L11
+	.byte	4
+.L9:
+	.byte	1
+	.byte	'..\\0_Src\\4_McHal\\Tricore\\Emem\\Std\\IfxEmem.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'D:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\Debug\\',0,12,1
+	.word	.L12
+	.byte	2
+	.byte	'unsigned long long int',0,8,7,3
+	.byte	'void',0,4
+	.word	178
+	.byte	5
+	.byte	'__ld64',0,3,1,110,19
+	.word	152
+	.byte	1,1,6
+	.byte	'addr',0,1,110,32
+	.word	184
+	.byte	7,0,8
+	.byte	'__st64',0,3,1,118,17,1,1,6
+	.byte	'addr',0,1,118,30
+	.word	184
+	.byte	6
+	.byte	'value',0,1,118,43
+	.word	152
+	.byte	7,0,2
+	.byte	'int',0,4,5,9
+	.word	265
+	.byte	10
+	.byte	'__c11_atomic_thread_fence',0,1,1,1,1,11
+	.word	272
+	.byte	0,2
+	.byte	'unsigned int',0,4,7,12
+	.word	314
+	.byte	4
+	.word	314
+	.byte	13
+	.byte	'__cmpswapw',0
+	.word	330
+	.byte	1,1,1,1,14
+	.byte	'p',0
+	.word	335
+	.byte	14
+	.byte	'value',0
+	.word	314
+	.byte	14
+	.byte	'compare',0
+	.word	314
+	.byte	0,15
+	.byte	'__nop',0,1,1,1,1
+.L23:
+	.byte	16,2,48,9,1,17
+	.byte	'IfxEmem_LockedState_locked',0,0,17
+	.byte	'IfxEmem_LockedState_unlocked',0,1,0,16,2,56,9,1,17
+	.byte	'IfxEmem_State_disabled',0,0,17
+	.byte	'IfxEmem_State_enabled',0,1,0
+.L26:
+	.byte	9
+	.word	469
+	.byte	18
+	.word	189
+	.byte	19
+	.word	207
+	.byte	7,0,18
+	.word	222
+	.byte	19
+	.word	236
+	.byte	19
+	.word	249
+	.byte	7,0,2
+	.byte	'short int',0,2,5,20
+	.byte	'__wchar_t',0,3,1,1
+	.word	558
+	.byte	20
+	.byte	'__size_t',0,3,1,1
+	.word	314
+	.byte	20
+	.byte	'__ptrdiff_t',0,3,1,1
+	.word	265
+	.byte	21,1,4
+	.word	626
+	.byte	20
+	.byte	'__codeptr',0,3,1,1
+	.word	628
+	.byte	2
+	.byte	'unsigned char',0,1,8,20
+	.byte	'uint8',0,4,89,24
+	.word	651
+	.byte	20
+	.byte	'sint16',0,4,90,24
+	.word	558
+	.byte	2
+	.byte	'unsigned short int',0,2,7,20
+	.byte	'uint16',0,4,91,24
+	.word	697
+	.byte	2
+	.byte	'long int',0,4,5,20
+	.byte	'sint32',0,4,92,24
+	.word	734
+	.byte	2
+	.byte	'unsigned long int',0,4,7,20
+	.byte	'uint32',0,4,93,24
+	.word	761
+	.byte	2
+	.byte	'float',0,4,4,20
+	.byte	'float32',0,4,94,24
+	.word	797
+	.byte	20
+	.byte	'boolean',0,4,104,24
+	.word	651
+	.byte	2
+	.byte	'long long int',0,8,5,20
+	.byte	'sint64',0,5,36,28
+	.word	838
+	.byte	20
+	.byte	'uint64',0,5,37,28
+	.word	152
+	.byte	20
+	.byte	'pvoid',0,5,40,28
+	.word	184
+	.byte	20
+	.byte	'Ifx_TickTime',0,5,43,28
+	.word	838
+	.byte	2
+	.byte	'unsigned int',0,4,7,22
+	.byte	'_Ifx_EMEM_CLC_Bits',0,6,45,16,4,23
+	.byte	'DISR',0,4
+	.word	920
+	.byte	1,31,2,35,0,23
+	.byte	'DISS',0,4
+	.word	920
+	.byte	1,30,2,35,0,23
+	.byte	'reserved_2',0,4
+	.word	920
+	.byte	30,0,2,35,0,0,20
+	.byte	'Ifx_EMEM_CLC_Bits',0,6,50,3
+	.word	936
+	.byte	22
+	.byte	'_Ifx_EMEM_ID_Bits',0,6,53,16,4,23
+	.byte	'MOD_REV',0,4
+	.word	920
+	.byte	8,24,2,35,0,23
+	.byte	'MOD_TYPE',0,4
+	.word	920
+	.byte	8,16,2,35,0,23
+	.byte	'MODNUMBER',0,4
+	.word	920
+	.byte	16,0,2,35,0,0,20
+	.byte	'Ifx_EMEM_ID_Bits',0,6,58,3
+	.word	1041
+	.byte	22
+	.byte	'_Ifx_EMEM_SBRCTR_Bits',0,6,61,16,4,23
+	.byte	'STBLOCK',0,4
+	.word	920
+	.byte	1,31,2,35,0,23
+	.byte	'STBULK',0,4
+	.word	920
+	.byte	3,28,2,35,0,23
+	.byte	'STBSLK',0,4
+	.word	920
+	.byte	4,24,2,35,0,23
+	.byte	'ACGSXCM0',0,4
+	.word	920
+	.byte	1,23,2,35,0,23
+	.byte	'reserved_9',0,4
+	.word	920
+	.byte	3,20,2,35,0,23
+	.byte	'ACGEN',0,4
+	.word	920
+	.byte	1,19,2,35,0,23
+	.byte	'ACGSXTM0',0,4
+	.word	920
+	.byte	1,18,2,35,0,23
+	.byte	'ACGSXTM1',0,4
+	.word	920
+	.byte	1,17,2,35,0,23
+	.byte	'reserved_15',0,4
+	.word	920
+	.byte	1,16,2,35,0,23
+	.byte	'ACGST0',0,4
+	.word	920
+	.byte	1,15,2,35,0,23
+	.byte	'ACGST1',0,4
+	.word	920
+	.byte	1,14,2,35,0,23
+	.byte	'ACGST2',0,4
+	.word	920
+	.byte	1,13,2,35,0,23
+	.byte	'ACGST3',0,4
+	.word	920
+	.byte	1,12,2,35,0,23
+	.byte	'ACGST4',0,4
+	.word	920
+	.byte	1,11,2,35,0,23
+	.byte	'ACGST5',0,4
+	.word	920
+	.byte	1,10,2,35,0,23
+	.byte	'ACGST6',0,4
+	.word	920
+	.byte	1,9,2,35,0,23
+	.byte	'ACGST7',0,4
+	.word	920
+	.byte	1,8,2,35,0,23
+	.byte	'ACGST8',0,4
+	.word	920
+	.byte	1,7,2,35,0,23
+	.byte	'ACGST9',0,4
+	.word	920
+	.byte	1,6,2,35,0,23
+	.byte	'ACGST10',0,4
+	.word	920
+	.byte	1,5,2,35,0,23
+	.byte	'ACGST11',0,4
+	.word	920
+	.byte	1,4,2,35,0,23
+	.byte	'ACGST12',0,4
+	.word	920
+	.byte	1,3,2,35,0,23
+	.byte	'ACGST13',0,4
+	.word	920
+	.byte	1,2,2,35,0,23
+	.byte	'ACGST14',0,4
+	.word	920
+	.byte	1,1,2,35,0,23
+	.byte	'ACGST15',0,4
+	.word	920
+	.byte	1,0,2,35,0,0,20
+	.byte	'Ifx_EMEM_SBRCTR_Bits',0,6,88,3
+	.word	1150
+	.byte	22
+	.byte	'_Ifx_EMEM_TILECC_Bits',0,6,91,16,4,23
+	.byte	'T0',0,4
+	.word	920
+	.byte	1,31,2,35,0,23
+	.byte	'T1',0,4
+	.word	920
+	.byte	1,30,2,35,0,23
+	.byte	'T2',0,4
+	.word	920
+	.byte	1,29,2,35,0,23
+	.byte	'T3',0,4
+	.word	920
+	.byte	1,28,2,35,0,23
+	.byte	'T4',0,4
+	.word	920
+	.byte	1,27,2,35,0,23
+	.byte	'T5',0,4
+	.word	920
+	.byte	1,26,2,35,0,23
+	.byte	'T6',0,4
+	.word	920
+	.byte	1,25,2,35,0,23
+	.byte	'T7',0,4
+	.word	920
+	.byte	1,24,2,35,0,23
+	.byte	'T8',0,4
+	.word	920
+	.byte	1,23,2,35,0,23
+	.byte	'T9',0,4
+	.word	920
+	.byte	1,22,2,35,0,23
+	.byte	'T10',0,4
+	.word	920
+	.byte	1,21,2,35,0,23
+	.byte	'T11',0,4
+	.word	920
+	.byte	1,20,2,35,0,23
+	.byte	'T12',0,4
+	.word	920
+	.byte	1,19,2,35,0,23
+	.byte	'T13',0,4
+	.word	920
+	.byte	1,18,2,35,0,23
+	.byte	'T14',0,4
+	.word	920
+	.byte	1,17,2,35,0,23
+	.byte	'T15',0,4
+	.word	920
+	.byte	1,16,2,35,0,23
+	.byte	'XTM0',0,4
+	.word	920
+	.byte	1,15,2,35,0,23
+	.byte	'XTM1',0,4
+	.word	920
+	.byte	1,14,2,35,0,23
+	.byte	'reserved_18',0,4
+	.word	920
+	.byte	14,0,2,35,0,0,20
+	.byte	'Ifx_EMEM_TILECC_Bits',0,6,112,3
+	.word	1678
+	.byte	22
+	.byte	'_Ifx_EMEM_TILECONFIG_Bits',0,6,115,16,4,23
+	.byte	'T0',0,4
+	.word	920
+	.byte	2,30,2,35,0,23
+	.byte	'T1',0,4
+	.word	920
+	.byte	2,28,2,35,0,23
+	.byte	'T2',0,4
+	.word	920
+	.byte	2,26,2,35,0,23
+	.byte	'T3',0,4
+	.word	920
+	.byte	2,24,2,35,0,23
+	.byte	'T4',0,4
+	.word	920
+	.byte	2,22,2,35,0,23
+	.byte	'T5',0,4
+	.word	920
+	.byte	2,20,2,35,0,23
+	.byte	'T6',0,4
+	.word	920
+	.byte	2,18,2,35,0,23
+	.byte	'T7',0,4
+	.word	920
+	.byte	2,16,2,35,0,23
+	.byte	'T8',0,4
+	.word	920
+	.byte	2,14,2,35,0,23
+	.byte	'T9',0,4
+	.word	920
+	.byte	2,12,2,35,0,23
+	.byte	'T10',0,4
+	.word	920
+	.byte	2,10,2,35,0,23
+	.byte	'T11',0,4
+	.word	920
+	.byte	2,8,2,35,0,23
+	.byte	'T12',0,4
+	.word	920
+	.byte	2,6,2,35,0,23
+	.byte	'T13',0,4
+	.word	920
+	.byte	2,4,2,35,0,23
+	.byte	'T14',0,4
+	.word	920
+	.byte	2,2,2,35,0,23
+	.byte	'T15',0,4
+	.word	920
+	.byte	2,0,2,35,0,0,20
+	.byte	'Ifx_EMEM_TILECONFIG_Bits',0,6,133,1,3
+	.word	2020
+	.byte	22
+	.byte	'_Ifx_EMEM_TILECONFIGXM_Bits',0,6,136,1,16,4,23
+	.byte	'XCM0',0,4
+	.word	920
+	.byte	2,30,2,35,0,23
+	.byte	'reserved_2',0,4
+	.word	920
+	.byte	14,16,2,35,0,23
+	.byte	'XTM0',0,4
+	.word	920
+	.byte	2,14,2,35,0,23
+	.byte	'XTM1',0,4
+	.word	920
+	.byte	2,12,2,35,0,23
+	.byte	'reserved_20',0,4
+	.word	920
+	.byte	12,0,2,35,0,0,20
+	.byte	'Ifx_EMEM_TILECONFIGXM_Bits',0,6,143,1,3
+	.word	2316
+	.byte	22
+	.byte	'_Ifx_EMEM_TILECT_Bits',0,6,146,1,16,4,23
+	.byte	'T0',0,4
+	.word	920
+	.byte	1,31,2,35,0,23
+	.byte	'T1',0,4
+	.word	920
+	.byte	1,30,2,35,0,23
+	.byte	'T2',0,4
+	.word	920
+	.byte	1,29,2,35,0,23
+	.byte	'T3',0,4
+	.word	920
+	.byte	1,28,2,35,0,23
+	.byte	'T4',0,4
+	.word	920
+	.byte	1,27,2,35,0,23
+	.byte	'T5',0,4
+	.word	920
+	.byte	1,26,2,35,0,23
+	.byte	'T6',0,4
+	.word	920
+	.byte	1,25,2,35,0,23
+	.byte	'T7',0,4
+	.word	920
+	.byte	1,24,2,35,0,23
+	.byte	'T8',0,4
+	.word	920
+	.byte	1,23,2,35,0,23
+	.byte	'T9',0,4
+	.word	920
+	.byte	1,22,2,35,0,23
+	.byte	'T10',0,4
+	.word	920
+	.byte	1,21,2,35,0,23
+	.byte	'T11',0,4
+	.word	920
+	.byte	1,20,2,35,0,23
+	.byte	'T12',0,4
+	.word	920
+	.byte	1,19,2,35,0,23
+	.byte	'T13',0,4
+	.word	920
+	.byte	1,18,2,35,0,23
+	.byte	'T14',0,4
+	.word	920
+	.byte	1,17,2,35,0,23
+	.byte	'T15',0,4
+	.word	920
+	.byte	1,16,2,35,0,23
+	.byte	'XTM0',0,4
+	.word	920
+	.byte	1,15,2,35,0,23
+	.byte	'XTM1',0,4
+	.word	920
+	.byte	1,14,2,35,0,23
+	.byte	'reserved_18',0,4
+	.word	920
+	.byte	14,0,2,35,0,0,20
+	.byte	'Ifx_EMEM_TILECT_Bits',0,6,167,1,3
+	.word	2480
+	.byte	22
+	.byte	'_Ifx_EMEM_TILESTATE_Bits',0,6,170,1,16,4,23
+	.byte	'TILE0',0,4
+	.word	920
+	.byte	2,30,2,35,0,23
+	.byte	'TILE1',0,4
+	.word	920
+	.byte	2,28,2,35,0,23
+	.byte	'TILE2',0,4
+	.word	920
+	.byte	2,26,2,35,0,23
+	.byte	'TILE3',0,4
+	.word	920
+	.byte	2,24,2,35,0,23
+	.byte	'TILE4',0,4
+	.word	920
+	.byte	2,22,2,35,0,23
+	.byte	'TILE5',0,4
+	.word	920
+	.byte	2,20,2,35,0,23
+	.byte	'TILE6',0,4
+	.word	920
+	.byte	2,18,2,35,0,23
+	.byte	'TILE7',0,4
+	.word	920
+	.byte	2,16,2,35,0,23
+	.byte	'TILE8',0,4
+	.word	920
+	.byte	2,14,2,35,0,23
+	.byte	'TILE9',0,4
+	.word	920
+	.byte	2,12,2,35,0,23
+	.byte	'TILE10',0,4
+	.word	920
+	.byte	2,10,2,35,0,23
+	.byte	'TILE11',0,4
+	.word	920
+	.byte	2,8,2,35,0,23
+	.byte	'TILE12',0,4
+	.word	920
+	.byte	2,6,2,35,0,23
+	.byte	'TILE13',0,4
+	.word	920
+	.byte	2,4,2,35,0,23
+	.byte	'TILE14',0,4
+	.word	920
+	.byte	2,2,2,35,0,23
+	.byte	'TILE15',0,4
+	.word	920
+	.byte	2,0,2,35,0,0,20
+	.byte	'Ifx_EMEM_TILESTATE_Bits',0,6,188,1,3
+	.word	2824
+	.byte	22
+	.byte	'_Ifx_EMEM_TILESTATEXM_Bits',0,6,191,1,16,4,23
+	.byte	'XCM0',0,4
+	.word	920
+	.byte	2,30,2,35,0,23
+	.byte	'reserved_2',0,4
+	.word	920
+	.byte	14,16,2,35,0,23
+	.byte	'XTM0',0,4
+	.word	920
+	.byte	2,14,2,35,0,23
+	.byte	'XTM1',0,4
+	.word	920
+	.byte	2,12,2,35,0,23
+	.byte	'reserved_20',0,4
+	.word	920
+	.byte	12,0,2,35,0,0,20
+	.byte	'Ifx_EMEM_TILESTATEXM_Bits',0,6,198,1,3
+	.word	3167
+	.byte	24,6,206,1,9,4,25
+	.byte	'U',0
+	.word	314
+	.byte	4,2,35,0,25
+	.byte	'I',0
+	.word	265
+	.byte	4,2,35,0,25
+	.byte	'B',0
+	.word	936
+	.byte	4,2,35,0,0,20
+	.byte	'Ifx_EMEM_CLC',0,6,214,1,3
+	.word	3329
+	.byte	24,6,217,1,9,4,25
+	.byte	'U',0
+	.word	314
+	.byte	4,2,35,0,25
+	.byte	'I',0
+	.word	265
+	.byte	4,2,35,0,25
+	.byte	'B',0
+	.word	1041
+	.byte	4,2,35,0,0,20
+	.byte	'Ifx_EMEM_ID',0,6,225,1,3
+	.word	3391
+	.byte	24,6,228,1,9,4,25
+	.byte	'U',0
+	.word	314
+	.byte	4,2,35,0,25
+	.byte	'I',0
+	.word	265
+	.byte	4,2,35,0,25
+	.byte	'B',0
+	.word	1150
+	.byte	4,2,35,0,0,20
+	.byte	'Ifx_EMEM_SBRCTR',0,6,236,1,3
+	.word	3452
+	.byte	24,6,239,1,9,4,25
+	.byte	'U',0
+	.word	314
+	.byte	4,2,35,0,25
+	.byte	'I',0
+	.word	265
+	.byte	4,2,35,0,25
+	.byte	'B',0
+	.word	1678
+	.byte	4,2,35,0,0,20
+	.byte	'Ifx_EMEM_TILECC',0,6,247,1,3
+	.word	3517
+	.byte	24,6,250,1,9,4,25
+	.byte	'U',0
+	.word	314
+	.byte	4,2,35,0,25
+	.byte	'I',0
+	.word	265
+	.byte	4,2,35,0,25
+	.byte	'B',0
+	.word	2020
+	.byte	4,2,35,0,0,20
+	.byte	'Ifx_EMEM_TILECONFIG',0,6,130,2,3
+	.word	3582
+	.byte	24,6,133,2,9,4,25
+	.byte	'U',0
+	.word	314
+	.byte	4,2,35,0,25
+	.byte	'I',0
+	.word	265
+	.byte	4,2,35,0,25
+	.byte	'B',0
+	.word	2316
+	.byte	4,2,35,0,0,20
+	.byte	'Ifx_EMEM_TILECONFIGXM',0,6,141,2,3
+	.word	3651
+	.byte	24,6,144,2,9,4,25
+	.byte	'U',0
+	.word	314
+	.byte	4,2,35,0,25
+	.byte	'I',0
+	.word	265
+	.byte	4,2,35,0,25
+	.byte	'B',0
+	.word	2480
+	.byte	4,2,35,0,0,20
+	.byte	'Ifx_EMEM_TILECT',0,6,152,2,3
+	.word	3722
+	.byte	24,6,155,2,9,4,25
+	.byte	'U',0
+	.word	314
+	.byte	4,2,35,0,25
+	.byte	'I',0
+	.word	265
+	.byte	4,2,35,0,25
+	.byte	'B',0
+	.word	2824
+	.byte	4,2,35,0,0,20
+	.byte	'Ifx_EMEM_TILESTATE',0,6,163,2,3
+	.word	3787
+	.byte	24,6,166,2,9,4,25
+	.byte	'U',0
+	.word	314
+	.byte	4,2,35,0,25
+	.byte	'I',0
+	.word	265
+	.byte	4,2,35,0,25
+	.byte	'B',0
+	.word	3167
+	.byte	4,2,35,0,0,20
+	.byte	'Ifx_EMEM_TILESTATEXM',0,6,174,2,3
+	.word	3855
+	.byte	20
+	.byte	'IfxEmem_LockedState',0,2,52,3
+	.word	403
+	.byte	20
+	.byte	'IfxEmem_State',0,2,60,3
+	.word	469
+	.byte	16,2,64,9,1,17
+	.byte	'IfxEmem_TileConfigMode_calibMode',0,0,0,20
+	.byte	'IfxEmem_TileConfigMode',0,2,67,3
+	.word	3975
+	.byte	16,2,71,9,1,17
+	.byte	'IfxEmem_TileNumber_0',0,0,17
+	.byte	'IfxEmem_TileNumber_1',0,1,17
+	.byte	'IfxEmem_TileNumber_2',0,2,17
+	.byte	'IfxEmem_TileNumber_3',0,3,17
+	.byte	'IfxEmem_TileNumber_4',0,4,17
+	.byte	'IfxEmem_TileNumber_5',0,5,17
+	.byte	'IfxEmem_TileNumber_6',0,6,17
+	.byte	'IfxEmem_TileNumber_7',0,7,17
+	.byte	'IfxEmem_TileNumber_8',0,8,17
+	.byte	'IfxEmem_TileNumber_9',0,9,17
+	.byte	'IfxEmem_TileNumber_10',0,10,17
+	.byte	'IfxEmem_TileNumber_11',0,11,17
+	.byte	'IfxEmem_TileNumber_12',0,12,17
+	.byte	'IfxEmem_TileNumber_13',0,13,17
+	.byte	'IfxEmem_TileNumber_14',0,14,17
+	.byte	'IfxEmem_TileNumber_15',0,15,0,20
+	.byte	'IfxEmem_TileNumber',0,2,89,3
+	.word	4047
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L11:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,59,0,3,8,0,0,4,15,0,73,19,0
+	.byte	0,5,46,1,3,8,32,13,58,15,59,15,57,15,73,19,54,15,39,12,0,0,6,5,0,3,8,58,15,59,15,57,15,73,19,0,0,7,11
+	.byte	0,0,0,8,46,1,3,8,32,13,58,15,59,15,57,15,54,15,39,12,0,0,9,38,0,73,19,0,0,10,46,1,3,8,54,15,39,12,63,12
+	.byte	60,12,0,0,11,5,0,73,19,0,0,12,53,0,73,19,0,0,13,46,1,3,8,73,19,54,15,39,12,63,12,60,12,0,0,14,5,0,3,8
+	.byte	73,19,0,0,15,46,0,3,8,54,15,39,12,63,12,60,12,0,0,16,4,1,58,15,59,15,57,15,11,15,0,0,17,40,0,3,8,28,13
+	.byte	0,0,18,46,1,49,19,0,0,19,5,0,49,19,0,0,20,22,0,3,8,58,15,59,15,57,15,73,19,0,0,21,21,0,54,15,0,0,22,19
+	.byte	1,3,8,58,15,59,15,57,15,11,15,0,0,23,13,0,3,8,11,15,73,19,13,15,12,15,56,9,0,0,24,23,1,58,15,59,15,57
+	.byte	15,11,15,0,0,25,13,0,3,8,73,19,11,15,56,9,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L12:
+	.word	.L29-.L28
+.L28:
+	.half	3
+	.word	.L31-.L30
+.L30:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1
+	.byte	'D:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\4_McHal\\Tricore\\_Reg',0,0
+	.byte	'D:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\4_McHal\\Tricore\\Cpu\\Std\\IfxCpu_Intrinsics.h',0
+	.byte	0,0,0
+	.byte	'..\\0_Src\\4_McHal\\Tricore\\Emem\\Std\\IfxEmem.h',0,0,0,0
+	.byte	'..\\0_Src\\4_McHal\\Tricore\\Emem\\Std\\IfxEmem.c',0,0,0,0
+	.byte	'D:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\4_McHal\\Tricore\\Cpu\\Std\\Platform_Types.h',0,0
+	.byte	0,0
+	.byte	'D:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\0_Src\\4_McHal\\Tricore\\Cpu\\Std\\Ifx_Types.h',0,0,0,0
+	.byte	'IfxEmem_regdef.h',0,1,0,0,0
+.L31:
+.L29:
+	.sdecl	'.debug_info',debug,cluster('IfxEmem_getLockedState')
+	.sect	'.debug_info'
+.L13:
+	.word	214
+	.half	3
+	.word	.L14
+	.byte	4,1
+	.byte	'..\\0_Src\\4_McHal\\Tricore\\Emem\\Std\\IfxEmem.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'D:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\Debug\\',0,12,1
+	.word	.L16,.L15
+	.byte	2
+	.word	.L9
+	.byte	3
+	.byte	'IfxEmem_getLockedState',0,1,36,21
+	.word	.L23
+	.byte	1,1,1
+	.word	.L6,.L24,.L5
+	.byte	4
+	.word	.L6,.L24
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('IfxEmem_getLockedState')
+	.sect	'.debug_abbrev'
+.L14:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('IfxEmem_getLockedState')
+	.sect	'.debug_line'
+.L15:
+	.word	.L33-.L32
+.L32:
+	.half	3
+	.word	.L35-.L34
+.L34:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\0_Src\\4_McHal\\Tricore\\Emem\\Std\\IfxEmem.c',0,0,0,0,0
+.L35:
+	.byte	5,53,7,0,5,2
+	.word	.L6
+	.byte	3,37,1,5,1,9
+	.half	.L36-.L6
+	.byte	3,1,1,7,9
+	.half	.L17-.L36
+	.byte	0,1,1
+.L33:
+	.sdecl	'.debug_ranges',debug,cluster('IfxEmem_getLockedState')
+	.sect	'.debug_ranges'
+.L16:
+	.word	-1,.L6,0,.L17-.L6,0,0
+	.sdecl	'.debug_info',debug,cluster('IfxEmem_setClockEnableState')
+	.sect	'.debug_info'
+.L18:
+	.word	233
+	.half	3
+	.word	.L19
+	.byte	4,1
+	.byte	'..\\0_Src\\4_McHal\\Tricore\\Emem\\Std\\IfxEmem.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'D:\\WorkSpace\\Tasking\\Tasking_TC27xD_ASC\\Debug\\',0,12,1
+	.word	.L21,.L20
+	.byte	2
+	.word	.L9
+	.byte	3
+	.byte	'IfxEmem_setClockEnableState',0,1,42,6,1,1,1
+	.word	.L8,.L25,.L7
+	.byte	4
+	.byte	'state',0,1,42,54
+	.word	.L26,.L27
+	.byte	5
+	.word	.L8,.L25
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('IfxEmem_setClockEnableState')
+	.sect	'.debug_abbrev'
+.L19:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('IfxEmem_setClockEnableState')
+	.sect	'.debug_line'
+.L20:
+	.word	.L38-.L37
+.L37:
+	.half	3
+	.word	.L40-.L39
+.L39:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\0_Src\\4_McHal\\Tricore\\Emem\\Std\\IfxEmem.c',0,0,0,0,0
+.L40:
+	.byte	5,26,7,0,5,2
+	.word	.L8
+	.byte	3,46,1,5,1,9
+	.half	.L41-.L8
+	.byte	3,124,1,5,5,9
+	.half	.L42-.L41
+	.byte	3,2,1,5,26,7,9
+	.half	.L43-.L42
+	.byte	3,2,1,5,32,9
+	.half	.L44-.L43
+	.byte	1,5,35,1,5,26,9
+	.half	.L3-.L44
+	.byte	3,4,1,5,32,9
+	.half	.L45-.L3
+	.byte	1,5,10,9
+	.half	.L46-.L45
+	.byte	3,4,1,5,1,9
+	.half	.L47-.L46
+	.byte	3,1,1,7,9
+	.half	.L22-.L47
+	.byte	0,1,1
+.L38:
+	.sdecl	'.debug_ranges',debug,cluster('IfxEmem_setClockEnableState')
+	.sect	'.debug_ranges'
+.L21:
+	.word	-1,.L8,0,.L22-.L8,0,0
+	.sdecl	'.debug_loc',debug,cluster('IfxEmem_getLockedState')
+	.sect	'.debug_loc'
+.L5:
+	.word	-1,.L6,0,.L24-.L6
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('IfxEmem_setClockEnableState')
+	.sect	'.debug_loc'
+.L7:
+	.word	-1,.L8,0,.L25-.L8
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L27:
+	.word	-1,.L8,0,.L25-.L8
+	.half	1
+	.byte	84
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L48:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('IfxEmem_getLockedState')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L48,.L6,.L24-.L6
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('IfxEmem_setClockEnableState')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L48,.L8,.L25-.L8
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+
+
+	; Module end
